@@ -40,15 +40,18 @@ public class Inheritance {
 		System.out.println(lemon.toString());
 		System.out.println(lemonWithArg.toString());
 
-		Fruit fruit = new Fruit();
-		Citris citris = new Citris();
+		Apple apple1 = new Apple("Sweet", "Crisp", "yellow", false);
+		Lemon lemon1 = new Lemon("Sour", false, 9);
+		Orange orange1= new Orange("Sweet", false, "round");
 
-		System.out.println(fruit.equals(apple));
-		System.out.println(apple.equals(fruit));
-		System.out.println(apple.equals(lemon));
-		System.out.println(lemonWithArg.equals(appleWithArg));
-		System.out.println(citris.equals(apple));
-		System.out.println(apple.equals(citris));
+
+		//same  from Citris and  same vairable
+		System.out.println(lemon1.equals(apple1));
+		//same super class and same vairable of fruit
+		System.out.println(apple1.equals(lemon1));
+		//different variable same superclasses
+		System.out.println(orange1.equals(appleWithArg));
+
 
 
 	}

@@ -31,10 +31,14 @@ public class Lemon extends Citris{
     }
 
     public boolean equals(Object o){
-        if(o instanceof Citris || o instanceof Fruit){
-            return true;
+        if(o instanceof Citris || o instanceof Fruit || o instanceof Lemon) {
+            Fruit temp = (Fruit) o;
+            if (this.getColor() == temp.getColor() && this.isRotten() == temp.isRotten()) {
+                return true;
+            }
         }else{
             return false;
         }
+        return false;
     }
 }

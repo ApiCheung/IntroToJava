@@ -18,11 +18,14 @@ public class FruitArraylist {
 		fruitArrayList.add(new Apple("Sweet", "Crisp", "Red", false));
 		fruitArrayList.add(new Apple("Tart", "Soft", "Green", true));
 		fruitArrayList.add(new Lemon("Sour", false, (int)(Math.random() * 100 )));
-		fruitArrayList.add(new Lemon("Sour", false, (int)(Math.random() * 100 )));
-		fruitArrayList.add(new Lemon("Sour", false, (int)(Math.random() * 100 )));
-		fruitArrayList.add(new Orange("Sweet", true, "Mandarin"));
 		fruitArrayList.add(new Orange("Sweet", true, "Mandarin"));
 		fruitArrayList.add(new Apple("Tart", "Soft", "Green", true));
+		fruitArrayList.add(new Orange("Sweet", true, "Mandarin"));
+		fruitArrayList.add(new Lemon("Sour", false, (int)(Math.random() * 100 )));
+		fruitArrayList.add(new Orange("Sweet", true, "Mandarin"));
+		fruitArrayList.add(new Orange("Sweet", true, "Mandarin"));
+
+
 
 
 		double avgSour = 0;
@@ -35,6 +38,11 @@ public class FruitArraylist {
 			}
 		}
 		System.out.println("The average sourness is " + avgSour);
+
+		System.out.println("Before delete green apple");
+		for(Fruit f : fruitArrayList){
+			System.out.println(f.toString());
+		}
 
 
 
@@ -49,8 +57,11 @@ public class FruitArraylist {
 		}
 
 		for(int i = 0; i < fruitArrayList.size(); i++){
-			if(fruitArrayList.get(i).getColor() == matchApple.getColor()){
-				fruitArrayList.remove(i);
+			if(fruitArrayList.get(i) instanceof Apple) {
+				Apple temp = (Apple) fruitArrayList.get(i);
+				if (matchApple.equals(temp)) {
+					fruitArrayList.remove(i);
+				}
 			}
 		}
 

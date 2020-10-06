@@ -42,15 +42,29 @@ public class Apple extends Fruit {
                 + getTexture();
     }
 
+//    public boolean equals(Object o){
+//        if(o instanceof Fruit){
+//            return true;
+//        }else{
+//            return false;
+//        }
+//    }
+
+    //compare apple variable to ses weather they are same
+
     public boolean equals(Object o){
-        if(o instanceof Fruit){
-            return true;
+        if(o instanceof Fruit || o instanceof Apple ){
+            Fruit temp = (Fruit) o;
+            if(this.isRotten() == temp.isRotten() && this.getColor() == temp.getColor()
+                   ){
+                return true;
+            }
         }else{
             return false;
         }
+        return false;
+
     }
-
-
 
 
 

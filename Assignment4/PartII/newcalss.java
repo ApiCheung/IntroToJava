@@ -6,4 +6,5 @@ package Assignment4.PartII;
  * @projectName IntroToJava-NYU
  */
 public class newcalss {
+    //nothing
 }

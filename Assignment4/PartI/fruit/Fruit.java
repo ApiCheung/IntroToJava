@@ -51,11 +51,16 @@ public class Fruit {
 // compare is in the same class
 
     public boolean equals(Object o){
-        if(o instanceof Object){
-            return true;
+        if(o instanceof Fruit){
+            Fruit temp = (Fruit) o;
+            if(this.getColor() == temp.getColor() && this.isRotten() == ((Fruit) o).isRotten()
+            ){
+                return true;
+            }
         }else{
             return false;
         }
+        return false;
     }
 
 

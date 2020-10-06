@@ -31,10 +31,15 @@ public class Citris extends Fruit{
     }
 
     public boolean equals(Object o){
-        if(o instanceof Fruit){
-            return true;
+        if(o instanceof Fruit || o instanceof Citris) {
+            Citris temp = (Citris) o;
+            if (this.getTaste() == temp.getTaste() && this.getColor() == temp.getColor()
+                    && this.isRotten() == temp.isRotten()) {
+                return true;
+            }
         }else{
             return false;
         }
+        return false;
     }
 }
