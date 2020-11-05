@@ -4,6 +4,8 @@ import org.w3c.dom.ls.LSOutput;
 
 import javax.crypto.spec.PSource;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.text.DecimalFormat;
@@ -124,8 +126,9 @@ public class SimpleAddition extends JFrame {
          * Hint: the code that initializes the text of sumField can be executed again to update the value to reflect
          * the current value
          */
-        addend1Field.addActionListener(new Update());
-        addend2Field.addActionListener(new Update());
+        Update up = new Update();
+        addend1Field.getDocument().addDocumentListener(up);
+        addend2Field.getDocument().addDocumentListener(up);
 
         totalGUI.add(titleLabel);
         totalGUI.add(textPanel);
@@ -137,10 +140,23 @@ public class SimpleAddition extends JFrame {
 
     }
 
-    class Update implements ActionListener{
+    class Update implements DocumentListener {
+
+
         @Override
-        public void actionPerformed(ActionEvent actionEvent) {
-            //need to press return to update
+        public void insertUpdate(DocumentEvent documentEvent) {
+            sum = Double.parseDouble(addend1Field.getText()) + Double.parseDouble(addend2Field.getText());
+            sumField.setText((Double.toString(sum)));
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent documentEvent) {
+            sum = Double.parseDouble(addend1Field.getText()) + Double.parseDouble(addend2Field.getText());
+            sumField.setText((Double.toString(sum)));
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent documentEvent) {
             sum = Double.parseDouble(addend1Field.getText()) + Double.parseDouble(addend2Field.getText());
             sumField.setText((Double.toString(sum)));
         }

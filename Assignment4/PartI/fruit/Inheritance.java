@@ -1,9 +1,13 @@
 package Assignment4.PartI.fruit;
 
+import Assignment5.PartI.shapes.GeometricObject;
+
 public class Inheritance {
 
 	public static void main(String[] args) {
 		// Here's some scratch space to experiment/debug your Fruit objects
+
+		
 
 		Apple apple = new Apple();
 		Apple appleWithArg = new Apple("Sweet", "Hard", "Red",true);
