@@ -1,7 +1,6 @@
 package ThreadLearning;
 
-import static ThreadLearning.ThreadColor.ANSI_GREEN;
-import static ThreadLearning.ThreadColor.ANSI_PURPLE;
+import static ThreadLearning.ThreadColor.*;
 
 /**
  * @author Esmee Zhang
@@ -10,21 +9,30 @@ import static ThreadLearning.ThreadColor.ANSI_PURPLE;
  */
 public class Main {
     public static void main(String[] args){
+        //interrupt another
         System.out.println(ANSI_PURPLE + "hello tha main thread");
 
         Thread anotherThread = new AnotherThread();
+        anotherThread.setName("== Another Thread ==");
         anotherThread.start();
 
         Thread runnableThread = new Thread(new MyRunnable());
         runnableThread.start();
 
+        //anotherThread.interrupt();
+
         //another method to run a thread annoymous
 
-        new Thread(){
-            public void run(){
-                System.out.println(ANSI_GREEN + "hello from the annoymous class thread");
+        new Thread(() -> {
+            System.out.println(ANSI_GREEN + "hello from the annoymous class thread");
+            try{
+                //等 another thread 结束
+                anotherThread.join();
+                System.out.println(ANSI_RED + "another thread terminated, or timed out");
+            }catch(InterruptedException e){
+                System.out.println(ANSI_RED + "i coul'd wait i was interrupted");
             }
-        }.start();
+        }).start();
 
         ////use lambda
         Thread lambdaThread = new Thread(()->{
