@@ -41,17 +41,18 @@ class Tutor {
         this.student = student;
     }
 
-    public synchronized void studyTime() {
+    public void studyTime() {
         System.out.println("Tutor has arrived");
-        try {
-            // wait for student to arrive and hand in assignment
-            Thread.sleep(300);
-        }
-        catch (InterruptedException e) {
+        synchronized (student) {
+            try {
+                // wait for student to arrive and hand in assignment
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
 
+            }
+            student.startStudy();
+            System.out.println("Tutor is studying with student");
         }
-        student.startStudy();
-        System.out.println("Tutor is studying with student");
     }
 
     public synchronized void getProgressReport() {
